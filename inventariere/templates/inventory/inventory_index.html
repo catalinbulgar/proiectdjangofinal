@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <a class="btn btn-primary" href="{% url 'inventory:adaugare_produs' %}"> Adaugare produs</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Nume_produs</th>
+                <th>Descriere</th>
+                <th>Categorie</th>
+                <th>Cantitate</th>
+                <th>Pret_unitate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in product_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.category }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.price_per_unit }}</td>
+                    <td>{{ item.active }}</td>
+                    <td>
+                        <a class="btn btn-success" href="{% url 'inventory:modifica' item.id %}">Editare</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock%}

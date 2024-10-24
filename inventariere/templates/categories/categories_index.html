@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <a class="btn btn-primary" href="{% url 'categories:adaugare_categorie' %}"> Adaugare categorie</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Nume</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in inventory_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ item.name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock%}

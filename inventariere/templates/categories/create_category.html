@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container mt-4">
+        <h1>Adauga o noua categorie</h1>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Salveaza Categorie</button>
+        </form>
+        <a href="{% url 'categories:lista_categorii' %}" class="btn btn-secondary mt-3">Inapoi la lista de categorii</a>
+    </div>
+{% endblock %}
