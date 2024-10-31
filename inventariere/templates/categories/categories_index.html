@@ -1,20 +1,80 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
-    <a class="btn btn-primary" href="{% url 'categories:adaugare_categorie' %}"> Adaugare categorie</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Index</th>
-                <th>Nume</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in inventory_list %}
+
+<style>
+    body {
+        color: black;
+    }
+
+    h1 {
+        color: black;
+    }
+
+    .btn-primary, .btn-secondary {
+        color: white;
+    }
+
+    .form-group label {
+        color: black;
+    }
+
+    .alert-danger {
+        color: black;
+    }
+
+    /* Compact table styling */
+    .table {
+        max-width: 500px; /* Limits the table width */
+        color: #333;
+        margin: auto;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .table th,
+    .table td {
+        padding: 6px 10px; /* Reduces padding for a tighter layout */
+        font-size: 1.4 rem; /* Adjusts font size for compactness */
+    }
+
+    .table td.index-column,
+    .table th.index-column {
+        width: 80px; /* Sets a narrower width for the index column */
+        text-align: center;
+    }
+
+    .table th.center-column,
+    .table td.center-column {
+        text-align: center;
+    }
+
+    /* Optional styling for column headers */
+    .thead-dark th {
+        background-color: #343a40;
+        color: #fff;
+    }
+</style>
+
+<div class="container text-center">
+    <a class="btn btn-primary mb-2" href="{% url 'categories:adaugare_categorie' %}">Adaugare categorie</a>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" style="background-color: rgba(255, 255, 255, 0.8);">
+            <thead class="thead-dark">
                 <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ item.name }}</td>
+                    <th class="index-column">Index</th>
+                    <th class="center-column">Nume</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% endblock%}
+            </thead>
+            <tbody>
+                {% for item in inventory_list %}
+                    <tr>
+                        <td class="index-column">{{ forloop.counter }}</td>
+                        <td class="center-column">{{ item.name }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

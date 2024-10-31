@@ -1,27 +1,45 @@
-<html>
+{% load static %}
+
+<! DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'inventariere/css/styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url("{% static 'inventariere/images/background2.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+    </style>
+</head>
     <title>Proiect Inventariere Bar</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-</head>
 <body>
-<div class= "container">
-    <div class="row">
-        <div class="col-md-12">
-            <nav>
-                <form method="post" action="{% url 'logout' %}">
-                    {% csrf_token %}
-                    {% if request.user.is_authenticated %}
-                        <button type="submit">Logout</button>
-                        <a class="btn" href="{% url 'inventory:adaugare_produs' %}">Product</a>
-                        <a class="btn" href="{% url 'categories:lista_categorii' %}">Categories</a>
-                    {% endif %}
-                    <a class="btn" href="/admin/">Admin</a>
-                </form>
-            </nav>
+    <div class= "container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        {% if request.user.is_authenticated %}
+                            <button type="submit">Logout</button>
+                            <a class="btn" href="{% url 'inventory:listare_produse' %}">Product</a>
+                            <a class="btn" href="{% url 'categories:lista_categorii' %}">Categories</a>
+                        {% endif %}
+                        <a class="btn" href="/admin/">Admin</a>
+                    </form>
+                </nav>
+            </div>
         </div>
+
+        {% block content %}
+        {% endblock %}
+
     </div>
-</div>
-{% block content %}
-{% endblock %}
 </body>
 </html>

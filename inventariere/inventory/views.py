@@ -13,7 +13,7 @@ class CreateNewProduct(LoginRequiredMixin, CreateView):
     fields = ['name', 'description', 'category', 'quantity', 'price_per_unit']
 
     def get_success_url(self):
-        return reverse('inventory:adaugare_produs')
+        return reverse('inventory:listare_produse')
 
 
 class AllProducts(LoginRequiredMixin, ListView):

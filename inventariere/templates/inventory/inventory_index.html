@@ -1,33 +1,37 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <a class="btn btn-primary" href="{% url 'inventory:adaugare_produs' %}"> Adaugare produs</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Index</th>
-                <th>Nume_produs</th>
-                <th>Descriere</th>
-                <th>Categorie</th>
-                <th>Cantitate</th>
-                <th>Pret_unitate</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in product_list %}
+<div class="container">
+    <a class="btn btn-primary mb-3" href="{% url 'inventory:adaugare_produs' %}"> Adaugare produs</a>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" style="background-color: rgba(255, 255, 255, 0.8);">
+            <thead class="thead-dark">
                 <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.description }}</td>
-                    <td>{{ item.category }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td>{{ item.price_per_unit }}</td>
-                    <td>{{ item.active }}</td>
-                    <td>
-                        <a class="btn btn-success" href="{% url 'inventory:modifica' item.id %}">Editare</a>
-                    </td>
+                    <th>Index</th>
+                    <th>Nume_produs</th>
+                    <th>Descriere</th>
+                    <th>Categorie</th>
+                    <th>Cantitate</th>
+                    <th>Pret_unitate</th>
+                    <th>Actions</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for item in product_list %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.category }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.price_per_unit }}</td>
+                        <td>
+                            <a class="btn btn-success" href="{% url 'inventory:modifica' item.id %}">Editare</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock%}
