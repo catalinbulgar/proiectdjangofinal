@@ -11,3 +11,9 @@ class CategoryForm(forms.ModelForm):
         widgets = {
             'name': TextInput(attrs={'placeholder': 'name', 'class': 'form-class'}),
         }
+
+    def clean(self):
+        name_value = self.cleaned_data.get('name')
+        if Category.objects.filter(name__iexact=name_value).exists():
+            self._errors['name'] = self.error_class(['Categoria deja existenta'])
+        return self.cleaned_data

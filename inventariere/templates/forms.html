@@ -2,12 +2,17 @@
 {% load static %}
 
 {% block content %}
+<div class="container mt-5">
     <div class="col-md-12">
+        {% for message in messages %}
+            <div class="alert alert-warning">{{ message }}</div>
+        {% endfor %}
         <form method="POST">
             {% csrf_token %}
             {% for field in form %}
                 <div class="col-md-6">
                 {{ field.label }} {{ field }} {{ field.errors }}
+                    <span style="color: red;">{{ field.errors }}</span>
                 </div>
             {% endfor %}
         <button type="submit" class="btn btn-success">Adauga produs</button>
@@ -16,4 +21,5 @@
         {% endif %}
         </form>
     </div>
+</div>
 {% endblock %}

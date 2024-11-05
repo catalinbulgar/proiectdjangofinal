@@ -64,13 +64,17 @@
                 <tr>
                     <th class="index-column">Index</th>
                     <th class="center-column">Nume</th>
+                    <th class="center-column">Actiuni</th>
                 </tr>
             </thead>
             <tbody>
                 {% for item in inventory_list %}
                     <tr>
-                        <td class="index-column">{{ forloop.counter }}</td>
-                        <td class="center-column">{{ item.name }}</td>
+                        <td class="index-column"><strong>{{ forloop.counter }}</strong></td>
+                        <td class="center-column"><strong>{{ item.name }}</strong></td>
+                        <td class="center-column">
+                            <a href="{% url 'categories:delete_category' item.pk %}" class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

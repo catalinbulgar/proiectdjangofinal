@@ -13,6 +13,14 @@ form {
     max-width: 500px;
 }
 
+.transparent-form {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 10px;
+    border: none;
+}
+
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -51,4 +59,22 @@ button:hover {
 
 .btn {
     margin: 5px;
+}
+
+form button, form .btn, form span {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.bold-text {
+    font-weight: bold;
 }

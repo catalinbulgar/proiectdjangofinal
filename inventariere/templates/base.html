@@ -1,6 +1,6 @@
 {% load static %}
 
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,7 @@
             background-image: url("{% static 'inventariere/images/background2.jpg' %}");
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             background-repeat: no-repeat;
             color: white;
         }
@@ -24,14 +25,15 @@
         <div class="row">
             <div class="col-md-12">
                 <nav>
-                    <form method="post" action="{% url 'logout' %}">
+                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
                         {% csrf_token %}
                         {% if request.user.is_authenticated %}
-                            <button type="submit">Logout</button>
-                            <a class="btn" href="{% url 'inventory:listare_produse' %}">Product</a>
-                            <a class="btn" href="{% url 'categories:lista_categorii' %}">Categories</a>
+                            <button type="submit" class="btn btn-danger" style="display: inline-block;">Logout</button>
+                            <a class="btn" href="{% url 'inventory:listare_produse' %}" style="display: inline-block;">Product</a>
+                            <a class="btn" href="{% url 'categories:lista_categorii' %}" style="display: inline-block;">Categories</a>
+                            <span style="font-weight: bold; display: inline-block;">Utilizator: {{ request.user.username }}</span>
                         {% endif %}
-                        <a class="btn" href="/admin/">Admin</a>
+                        <a class="btn" href="/admin/" style="display: inline-block;">Admin</a>
                     </form>
                 </nav>
             </div>
