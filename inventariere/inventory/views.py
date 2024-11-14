@@ -34,7 +34,6 @@ class AllProducts(LoginRequiredMixin, ListView):
 
 
 class UpdateProduct(LoginRequiredMixin, UpdateView):
-
     model = Product
     fields = ['name', 'description', 'category', 'quantity', 'price_per_unit']
     template_name = 'forms.html'

@@ -9,16 +9,23 @@
         {% endfor %}
         <form method="POST">
             {% csrf_token %}
-            {% for field in form %}
-                <div class="col-md-6">
-                {{ field.label }} {{ field }} {{ field.errors }}
-                    <span style="color: red;">{{ field.errors }}</span>
-                </div>
-            {% endfor %}
-        <button type="submit" class="btn btn-success">Adauga produs</button>
-        {% if 'adaugare_produs' in request.path %}
-            <a class="btn-btn-info" href="{% url 'inventory:listare_produse' %}">Back</a>
-        {% endif %}
+            <div class="row">
+                {% for field in form %}
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="text-danger">{{ field.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-success">Adaugă produs</button>
+            {% if 'adaugare_produs' in request.path %}
+                <a class="btn btn-info" href="{% url 'inventory:listare_produse' %}">Înapoi</a>
+            {% endif %}
         </form>
     </div>
 </div>
